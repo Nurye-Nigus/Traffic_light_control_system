@@ -4,9 +4,13 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
+ 
+
 #lets creat a route
 @app.route("/")
-def hello_world():
-  return "Hello Nurye How are u"
+def hello_nurye():
+  return render_template("home.html")
+
+
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
