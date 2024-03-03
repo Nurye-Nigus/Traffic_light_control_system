@@ -1,14 +1,17 @@
-{% extends 'base.html' %}
+{% extends 'base_with_buttons.html' %}
+
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<h1 class="text-center mt-2 mb-4">Traffic Light Control system</h1>
-<img class="img_bnr" id="banner" src="https://5e493f0c-dbdf-426e-a5e1-4e2a4419bd64-00-3cekb7697mo06.riker.replit.dev/static/baner.jpg">
-<h2 class="text-center mt-2 mb-4">About the traffic light controller</h2>
-<p class="lead">The traffic light control system integrated with computer vision and machine learning models revolutionizes the way drivers receive information about traffic conditions at upcoming intersections. Utilizing a network of cameras and sophisticated algorithms, this system continuously monitors traffic flow and detects congestion in real-time. By analyzing patterns and historical data, the system predicts potential traffic jams at the next junction and dynamically adjusts traffic light timings to alleviate congestion and optimize traffic flow. Through intuitive visual cues or digital displays, drivers are informed about the upcoming traffic conditions, enabling them to make informed decisions and potentially reroute to avoid delays. This innovative approach not only enhances safety and efficiency on the roads but also empowers drivers with proactive measures to navigate through urban environments more effectively.</p>
-<h2 class="text-center">Available Junction Names</h2>
-<p class="text-center">Select one of the squares you want to see the traffic jam</p>
 
-{% include 'squires.html' %}
-
-<p class="mt-4">Copyright 2024, Nurye Nigus</p>
+  <div class="container">
+    <h1 class="text-center mt-2 mb-4">Traffic Light Control system</h1>
+    <img class="img_bnr" id="banner" src="https://5e493f0c-dbdf-426e-a5e1-4e2a4419bd64-00-3cekb7697mo06.riker.replit.dev/static/baner.jpg">
+    <h2 class="text-center mt-2 mb-4">About the traffic light controller</h2>
+    <p class="lead">The traffic light control system integrated with computer vision and machine learning models revolutionizes the way drivers receive information about traffic conditions at upcoming intersections. Utilizing a network of cameras and sophisticated algorithms, this system continuously monitors traffic flow and detects congestion in real-time. By analyzing patterns and historical data, the system predicts potential traffic jams at the next junction and dynamically adjusts traffic light timings to alleviate congestion and optimize traffic flow. Through intuitive visual cues or digital displays, drivers are informed about the upcoming traffic conditions, enabling them to make informed decisions and potentially reroute to avoid delays. This innovative approach not only enhances safety and efficiency on the roads but also empowers drivers with proactive measures to navigate through urban environments more effectively.</p>
+    <h2 class="text-center">Available Junction Names</h2>
+    <p class="text-center">Select one of the squares you want to see the traffic jam</p>
+    {% include 'squires.html' %}
+    <p class="mt-4">Copyright 2024, Nurye Nigus</p>
+  </div>
 {% endblock %}

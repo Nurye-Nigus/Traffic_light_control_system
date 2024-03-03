@@ -1,0 +1,42 @@
+{% extends 'base_with_buttons.html' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="mt-5">Contact</h1>
+  <p class="lead">You can reach out to us using the following contact information:</p>
+  <ul class="list-unstyled">
+    <li><strong>Phone:</strong> +251929404324</li>
+    <li><strong>Email:</strong> nryngs2006@gmail.com</li>
+    <li><strong>LinkedIn:</strong> https://www.linkedin.com/in/nryngs/</li>
+    <li><strong>GitHub:</strong> https://github.com/Nurye-Nigus</li>
+  </ul>
+
+  <h2 class="mt-5">Developers</h2>
+  <ul class="list-unstyled">
+    <li>Nurye Nigus</li>
+    <li>Rodas Tesfaye</li>
+    <li>Tsinetsedal</li>
+    <li>Ruth</li>
+    <!-- Add other developers' details here -->
+  </ul>
+
+  <h2 class="mt-5">Comments</h2>
+  <form action="/submit_comment" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone:</label>
+      <input type="text" class="form-control" id="phone" name="phone" required>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}
