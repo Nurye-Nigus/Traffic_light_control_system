@@ -23,7 +23,8 @@
   </ul>
 
   <h2 class="mt-5">Comments</h2>
-  <form action="/submit_comment" method="post">
+
+  <form id="commentForm" action="/submit_comment" method="post">
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
       <input type="text" class="form-control" id="name" name="name" required>
@@ -39,4 +40,33 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const commentForm = document.getElementById('commentForm');
+  commentForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Fetch form data
+    const formData = new FormData(commentForm);
+
+    // Send form data to server using fetch
+    fetch('/submit_comment', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Show pop-up message
+      alert(data.message);
+
+      // Clear form fields
+      commentForm.reset();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  });
+});
+</script>
 {% endblock %}

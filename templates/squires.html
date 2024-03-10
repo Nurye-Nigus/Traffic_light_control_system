@@ -1,30 +1,36 @@
-{% extends 'base_no_buttons.html' %}
-
-{% block content %}
-<div class="container">
-  <div class="row">
-    {% for squire in squires %}
-    <div class="col-sm-12 col-md-4">
-      <div class="squire">
-        <div>
-          <p><strong>Squire Name:</strong> {{ squire.name }}</p>
-          <p><strong>Junctions:</strong> {{ squire.junctions }}</p>
-          <p><strong>Google Map Location:</strong> <a href="{{ squire.map_location }}" target="_blank">View on Google Maps</a></p>
-          <p><strong>Morning Traffic Manager:</strong> {{ squire.morning_manager }}</p>
-          <p><strong>Afternoon Traffic Manager:</strong> {{ squire.afternoon_manager }}</p>
-          <p><strong>Evening Traffic Manager:</strong> {{ squire.evening_manager }}</p>
-        </div>
-        <button class="btn btn-primary btn-lg" type="button" onclick="redirectToDisplay('{{ squire.name }}', '{{ squire.junctions }}', '{{ squire.map_location }}')">Click here to see the number of cars</button>
+<div class="row">
+  {% for squire in squires %}
+  <div class="col-sm-12 col-md-4">
+    <div class="squire">
+      <div>
+        <p><strong>Squire Name:</strong> {{ squire[1] }}</p>
+        {% if squire[2] %}
+        <p><strong>Junction 1:</strong> {{ squire[2] }}</p>
+        {% endif %}
+        {% if squire[3] %}
+        <p><strong>Junction 2:</strong> {{ squire[3] }}</p>
+        {% endif %}
+        {% if squire[4] %}
+        <p><strong>Junction 3:</strong> {{ squire[4] }}</p>
+        {% endif %}
+        {% if squire[5] %}
+        <p><strong>Junction 4:</strong> {{ squire[5] }}</p>
+        {% endif %}
+        <p><strong>Google Map Location:</strong> <a href="{{ squire[6] }}" target="_blank">View on Google Maps</a></p>
+        <p><strong>Morning Traffic Manager:</strong> {{ squire[7] }}</p>
+        <p><strong>Afternoon Traffic Manager:</strong> {{ squire[8] }}</p>
+        <p><strong>Evening Traffic Manager:</strong> {{ squire[9] }}</p>
       </div>
+      <button class="btn btn-primary btn-lg" type="button" onclick="redirectToDisplay('{{ squire[1] }}', { 'Junction 1': '{{ squire[2] }}', 'Junction 2': '{{ squire[3] }}', 'Junction 3': '{{ squire[4] }}', 'Junction 4': '{{ squire[5] }}' }, '{{ squire[6] }}')">Click here to see the number of cars</button>
     </div>
-    {% endfor %}
   </div>
+  {% endfor %}
 </div>
 
 <script>
-  function redirectToDisplay(squireName, junctions, mapLocation) {
-    // Pass data to display.html using query parameters
-    window.location.href = `/display?squireName=${encodeURIComponent(squireName)}&junctions=${encodeURIComponent(junctions)}&mapLocation=${encodeURIComponent(mapLocation)}`;
-  }
+function redirectToDisplay(squireName, junctions, mapLocation) {
+  // Pass data to display.html using query parameters
+  const junctionData = JSON.stringify(junctions);
+  window.location.href = `/display?squireName=${encodeURIComponent(squireName)}&junctionData=${encodeURIComponent(junctionData)}&mapLocation=${encodeURIComponent(mapLocation)}`;
+}
 </script>
-{% endblock %}
