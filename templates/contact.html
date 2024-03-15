@@ -12,14 +12,12 @@
     <li><strong>LinkedIn:</strong> https://www.linkedin.com/in/nryngs/</li>
     <li><strong>GitHub:</strong> https://github.com/Nurye-Nigus</li>
   </ul>
-
   <h2 class="mt-5">Developers</h2>
   <ul class="list-unstyled">
     <li>Nurye Nigus</li>
     <li>Rodas Tesfaye</li>
     <li>Tsinetsedal</li>
     <li>Ruth</li>
-    <!-- Add other developers' details here -->
   </ul>
 
   <h2 class="mt-5">Comments</h2>
@@ -37,30 +35,31 @@
       <label for="description" class="form-label">Description:</label>
       <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
   </form>
 </div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const commentForm = document.getElementById('commentForm');
-  commentForm.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
+  const submitButton = document.getElementById('submitButton');
 
-    // Fetch form data
+  commentForm.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+   
     const formData = new FormData(commentForm);
 
-    // Send form data to server using fetch
     fetch('/submit_comment', {
       method: 'POST',
       body: formData
     })
     .then(response => response.json())
     .then(data => {
-      // Show pop-up message
+
       alert(data.message);
 
-      // Clear form fields
+      
       commentForm.reset();
     })
     .catch(error => {

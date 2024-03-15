@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="container" id="content">
-    <h1 id="squireNameHeader" class="text-center mt-2 mb-4"></h1>
+    <h1 id="squireNameHeader" class="text-center mt-2 mb-4">{{ squireName }}</h1>
     <div class="table-responsive">
         <table id="carPredictionTable" class="table table-striped table-hover">
             <thead class="thead-dark">
@@ -14,55 +14,29 @@
                 </tr>
             </thead>
             <tbody>
+                {% for junction, count in junction_data.items() %}
+                <tr>
+                    <td>{{ count }}</td>
+                    <td>{{ car_count }}</td>
+                </tr>
+                {% endfor %}
+               
             </tbody>
         </table>
     </div>
+    <p class="text-center"><a href="{{ map_location }}" target="_blank">View on Google Maps</a></p>
 </div>
 
-<script>
-    // Function to generate random car count (for demonstration purposes)
-    function getRandomNumber() {
-      return Math.floor(Math.random() * 200) + 50; // Generates a random number between 50 and 250
-    }
-  
-    // Retrieve data from query parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const squireName = urlParams.get('squireName');
-    const junctionData = JSON.parse(urlParams.get('junctionData'));
-    
-    // Display squire name
-    document.getElementById('squireNameHeader').innerText = `${squireName} Car Prediction Results`;
-  
-    // Dynamically generate table rows based on junctions if they exist
-    const tableBody = document.querySelector('#carPredictionTable tbody');
-    if (junctionData) {
-      for (const [junctionName, carCount] of Object.entries(junctionData)) {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${junctionName}</td>
-          <td>${getRandomNumber()}</td>
-        `;
-        tableBody.appendChild(row);
-      }
-    } else {
-      // Display message if no junctions are available
-      const row = document.createElement('tr');
-      row.innerHTML = `<td colspan="2">No junctions available</td>`;
-      tableBody.appendChild(row);
-    }
-  </script>
-  
-
 <style>
-/* CSS for hover animation */
-body {
-    background-color: #8B4513; /* Brown background */
-  }
+   
+    body {
+        background-color: #8B4513;
+    }
 
-  /* CSS for hover animation */
-  #carPredictionTable tbody tr:hover {
-    background-color: #f5f5f5; /* Change background color on hover */
-    transition: background-color 0.3s ease; /* Add transition for smooth color change */
-  }
+   
+    #carPredictionTable tbody tr:hover {
+        background-color: #f5f5f5; 
+        transition: background-color 0.3s ease;
+    }
 </style>
 {% endblock %}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+   
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #8B4513; 
+            color: #fff; 
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #8811f2;
+        }
+        tr:hover {
+            background-color: #A0522D; 
+        }
+        .add-button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .update-button, .delete-button {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .delete-button {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <h2>Comments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for comment in comments %}
+                    <tr class="animate__animated animate__fadeInUp">
+                        <td>{{ comment.name }}</td>
+                        <td>{{ comment.phone }}</td>
+                        <td>{{ comment.description }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Squires</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Junction 1</th>
+                    <th>Junction 2</th>
+                    <th>Junction 3</th>
+                    <th>Junction 4</th>
+                    <th>Google Map</th>
+                    <th>MTM</th>
+                    <th>ATM</th>
+                    <th>ETM</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for squire in squires %}
+                    <tr class="animate__animated animate__fadeInUp">
+                        <td>{{ squire.name }}</td>
+                        <td>{{ squire.junction1 }}</td>
+                        <td>{{ squire.junction2 }}</td>
+                        <td>{{ squire.junction3 }}</td>
+                        <td>{{ squire.junction4 }}</td>
+                        <td>{{ squire.google_map }}</td>
+                        <td>{{ squire.mtm }}</td>
+                        <td>{{ squire.atm }}</td>
+                        <td>{{ squire.etm }}</td>
+                        <td>
+                            <a href="{{ url_for('update_squire', id=squire.id) }}" class="update-button">Update</a>
+                            <form id="deleteForm{{ squire.id }}" action="{{ url_for('delete_squire', squire_id=squire.id) }}" method="post" style="display: inline;">
+                                <button type="button" onclick="confirmDelete({{ squire.id }})" class="delete-button">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+       
+        <div class="add-button">
+            <a href="{{ url_for('add_squire') }}" class="update-button">Add Squire</a>
+        </div>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+    <script>
+        function confirmDelete(squireId) {
+            if (confirm("Are you sure you want to delete this squire?")) {
+                document.getElementById("deleteForm" + squireId).submit();
+            }
+        }
+    </script>
+</body>
+</html>

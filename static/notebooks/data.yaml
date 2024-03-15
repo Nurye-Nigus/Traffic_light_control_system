@@ -1,0 +1,4 @@
+train: C:\\Users\\hp\\Desktop\\software_HILCOE\\traffic_light_control_system\\static\\notebooks\\traning_data\\Cars\\train\\images
+val: C:\\Users\\hp\\Desktop\\software_HILCOE\\traffic_light_control_system\\static\\notebooks\\traning_data\\Cars\\validation\\images
+nc: 1
+names: ["car"]

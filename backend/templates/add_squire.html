@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Squire</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: brown; 
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: white; 
+        }
+        form {
+            background-color: #fff; 
+            padding: 20px;
+            border-radius: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; 
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; 
+            color: #fff; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #007bff; 
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add Squire</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="junction1">Junction 1:</label>
+        <input type="text" id="junction1" name="junction1" required>
+
+        <label for="junction2">Junction 2:</label>
+        <input type="text" id="junction2" name="junction2" required>
+
+        <label for="junction3">Junction 3:</label>
+        <input type="text" id="junction3" name="junction3" required>
+
+        <label for="junction4">Junction 4:</label>
+        <input type="text" id="junction4" name="junction4" required>
+
+        <label for="google_map">Google Map:</label>
+        <input type="text" id="google_map" name="google_map" required>
+
+        <label for="mtm">MTM:</label>
+        <input type="text" id="mtm" name="mtm" required>
+
+        <label for="atm">ATM:</label>
+        <input type="text" id="atm" name="atm" required>
+
+        <label for="etm">ETM:</label>
+        <input type="text" id="etm" name="etm" required>
+
+        <input type="submit" value="Submit">
+    </form>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+</body>
+</html>
